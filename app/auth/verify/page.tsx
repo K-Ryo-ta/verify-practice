@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
 interface VerifyState {
   status: "loading" | "success" | "error";
@@ -8,7 +8,6 @@ interface VerifyState {
 
 const Verify = () => {
   const [state, setState] = useState<VerifyState>({ status: "loading" });
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   useEffect(() => {
