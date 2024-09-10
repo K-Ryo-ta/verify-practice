@@ -1,7 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
+
 interface VerifyState {
   status: "loading" | "success" | "error";
 }
@@ -45,4 +46,10 @@ const Verify = () => {
   return null;
 };
 
-export default Verify;
+const VerifyWithSuspense = () => (
+  <Suspense fallback={<p>ロード中...</p>}>
+    <Verify />
+  </Suspense>
+);
+
+export default VerifyWithSuspense;
